@@ -205,7 +205,7 @@ function IntroAnimation({ controls, lat, lng }) {
       <div className="w-full max-w-3xl">
         <div className="text-center mb-3 sm:mb-4">
           <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800">You're invited</h2>
-          <p className="text-xs sm:text-sm md:text-base text-gray-700 mt-1 sm:mt-2">We travel to meet you — a little journey before a milestone</p>
+          <p className="text-xs sm:text-sm md:text-base text-gray-700 mt-1 sm:mt-2">We await to meet you — a little journey before a milestone</p>
         </div>
 
         <div className="relative bg-[#f6f3ef] rounded-lg overflow-hidden" style={{ height: 'clamp(300px, 50vh, 500px)' }}>
@@ -511,7 +511,7 @@ function CardFlip({ lat, lng }) {
                     <svg className="w-5 h-5 text-gray-600 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M8 7V3M16 7V3M3 11h18M4 21h16a1 1 0 001-1V11H3v9a1 1 0 001 1z" /></svg>
                     <div>
                       <div className="font-medium">Date & Time</div>
-                      <div className="text-xs text-gray-600">28 June 2025 — 4:00 PM</div>
+                      <div className="text-xs text-gray-600">27 December 2025 — 1:00 PM</div>
                     </div>
                   </div>
                 </div>
