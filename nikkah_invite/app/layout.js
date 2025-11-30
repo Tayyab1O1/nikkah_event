@@ -11,10 +11,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Get the base URL - replace with your actual Vercel deployment URL
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL 
-  ? `https://${process.env.VERCEL_URL || process.env.NEXT_PUBLIC_SITE_URL}`
-  : 'https://your-vercel-url.vercel.app'; // TODO: Replace with your actual Vercel URL
+// Get the base URL - replace 'nikkah-event.vercel.app' with your actual Vercel URL
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  // Replace this with your actual Vercel deployment URL
+  return 'https://nikkah-event.vercel.app';
+};
+
+const baseUrl = getBaseUrl();
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -28,11 +37,11 @@ export const metadata = {
   openGraph: {
     title: "Nikkah Invitation - Tayyab & Areej",
     description: "You are warmly invited to our Nikkah ceremony. Join us in celebrating this special day.",
-    url: '/',
+    url: baseUrl,
     siteName: 'Nikkah Invitation',
     images: [
       {
-        url: '/front.png',
+        url: `${baseUrl}/front.png`,
         width: 1200,
         height: 630,
         alt: 'Nikkah Invitation Card - Tayyab & Areej',
@@ -45,13 +54,26 @@ export const metadata = {
     card: 'summary_large_image',
     title: "Nikkah Invitation - Tayyab & Areej",
     description: "You are warmly invited to our Nikkah ceremony. Join us in celebrating this special day.",
-    images: ['/front.png'],
+    images: [`${baseUrl}/front.png`],
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Explicit meta tags for WhatsApp compatibility */}
+        <meta property="og:image" content={`${baseUrl}/front.png`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="Nikkah Invitation Card - Tayyab & Areej" />
+        <meta property="og:url" content={baseUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Nikkah Invitation - Tayyab & Areej" />
+        <meta property="og:description" content="You are warmly invited to our Nikkah ceremony. Join us in celebrating this special day." />
+        <meta name="twitter:image" content={`${baseUrl}/front.png`} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
